@@ -117,10 +117,11 @@ db.products.belongsTo(db.productDetails);
 // db.products.hasOne(db.sales);
 // db.products.hasMany(db.reviews);
 db.products.belongsTo(db.brands);
-// db.brands.hasMany(db.products);
+db.brands.hasMany(db.products);
 db.products.belongsTo(db.categories);
 db.products.belongsTo(db.categoryLittles);
 db.reviews.belongsTo(db.products);
+db.products.hasMany(db.reviews);
 // db.products.belongsTo(db.likes);
 // db.users.hasMany(db.likes);
 // force: true, alter: true

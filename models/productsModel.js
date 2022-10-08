@@ -23,7 +23,11 @@ const Products = (sequelize, DataTypes) => {
         model: "sales",
         key: "id",
       },
-    }, //boshqa table
+    },
+    // price: {
+    //   type: DataTypes.BIGINT,
+    //   allowNull: false,
+    // }, //boshqa table
     //boshqa table
     productDetailId: {
       type: DataTypes.UUID,

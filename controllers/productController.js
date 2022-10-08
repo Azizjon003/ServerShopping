@@ -32,6 +32,10 @@ const getAll = catchAsync(async (req, res) => {
         model: db.categoryLittles,
         attributes: ["id", "name", "photo"],
       },
+      {
+        model: db.reviews,
+        attributes: ["id", "userId", "comment", "rating", "createdAt"],
+      },
     ],
     attributes: ["id", "name", "image_main", "views", "createdAt", "updatedAt"],
   });
@@ -91,6 +95,10 @@ const getOne = catchAsync(async (req, res) => {
       {
         model: db.categoryLittles,
         attributes: ["id", "name", "photo"],
+      },
+      {
+        model: db.reviews,
+        attributes: ["id", "userId", "comment", "rating", "createdAt"],
       },
     ],
     attributes: ["id", "name", "image_main", "views", "createdAt", "updatedAt"],
