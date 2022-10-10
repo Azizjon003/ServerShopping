@@ -24,11 +24,11 @@ const Products = (sequelize, DataTypes) => {
         key: "id",
       },
     },
-    // price: {
-    //   type: DataTypes.BIGINT,
-    //   allowNull: false,
-    // }, //boshqa table
-    //boshqa table
+    price: {
+      type: DataTypes.BIGINT,
+      allowNull: false,
+    }, //boshqa table
+
     productDetailId: {
       type: DataTypes.UUID,
       allowNull: false,

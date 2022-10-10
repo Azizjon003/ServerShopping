@@ -122,6 +122,8 @@ db.products.belongsTo(db.categories);
 db.products.belongsTo(db.categoryLittles);
 db.reviews.belongsTo(db.products);
 db.products.hasMany(db.reviews);
+db.likes.belongsTo(db.products);
+db.users.hasMany(db.likes);
 // db.products.belongsTo(db.likes);
 // db.users.hasMany(db.likes);
 // force: true, alter: true

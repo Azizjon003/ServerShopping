@@ -7,8 +7,16 @@ const likes = (sequelize, DataTypes) => {
     },
     productId: {
       type: DataTypes.UUID,
-      refences: {
+      refenrences: {
         model: "products",
+        key: "id",
+      },
+    },
+    userId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: "users",
         key: "id",
       },
     },

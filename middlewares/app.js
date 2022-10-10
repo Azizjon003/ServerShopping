@@ -18,7 +18,9 @@ const brandsModel = require("../routes/brandRoutes");
 const auth = require("../routes/authRouter");
 const details = require("../routes/detailsRoute");
 const product = require("../routes/productRoute");
+const likeRoute = require("../routes/likeRoute");
 app.use("/", auth);
+app.use("/api/v1/like", likeRoute);
 app.use("/api/v1/product", product);
 auth.use("/api/v1/details", details);
 app.use("/api/v1/brands", brandsModel);
@@ -30,6 +32,7 @@ app.use("/api/v1/users", userRouter);
 app.use("/api/v1/vacancyCategories", vacancyCategories);
 app.use("/api/v1/submitVacancy", submitVacancy);
 app.use("/api/v1/reviews", review);
+
 app.use(errorHandler);
 
 module.exports = app;
