@@ -21,6 +21,9 @@ const getAll = catchAsync(async (req, res) => {
 });
 
 const add = catchAsync(async (req, res) => {
+  req.body.photo =
+    "http://localhost:8000/images/" + req.file.filename || "no-image.jpg";
+
   const views = await Brands.create(req.body);
   res.status(200).json({
     data: views,

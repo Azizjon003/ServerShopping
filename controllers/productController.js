@@ -115,9 +115,10 @@ const update = async (req, res) => {
   const loc = await Product.findOne({ where: { id: req.params.id } });
 
   let name = req.body.name || loc.name;
-
+  const photo =
+    "http://localhost:8000/images/" + req.file.filename || loc.photo;
   const newLocation = await Product.update(
-    { name },
+    { name, photo },
     { where: { id: req.params.id } }
   );
 

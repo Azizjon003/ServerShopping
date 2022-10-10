@@ -56,7 +56,7 @@ const update = async (req, res) => {
   const loc = await Category.findOne({ where: { id: req.params.id } });
 
   let name = req.body.name || loc.name;
-  let photo = req.body.photo || loc.photo;
+  let photo = "http://localhost:8000/images/" + req.file.filename || loc.photo;
 
   const newLocation = await Category.update(
     { photo, name },
