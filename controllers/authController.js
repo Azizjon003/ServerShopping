@@ -53,6 +53,8 @@ const signUp = catchAsync(async (req, res, next) => {
     password,
     passwordConfirm,
   } = req.body;
+  const photo =
+    "http://localhost:8000/images/" + req.file.filename || "default.jpg";
   const user = await User.create({
     first_name,
     last_name,
@@ -61,6 +63,7 @@ const signUp = catchAsync(async (req, res, next) => {
     phone,
     password,
     passwordConfirm,
+    photo,
   });
   if (!user) {
     new AppError("User not created", 400);

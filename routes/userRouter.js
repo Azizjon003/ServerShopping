@@ -1,7 +1,11 @@
 const router = require("express").Router();
 const userController = require("../controllers/userController");
+const { upload } = require("../utility/upload");
 
-router.route("/").post(userController.add).get(userController.getAll);
+router
+  .route("/")
+  .post(upload.single("photo"), userController.add)
+  .get(userController.getAll);
 router
   .route("/:id")
   .patch(userController.update)

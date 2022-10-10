@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const path = require("path");
 const morgan = require("morgan");
 const parser = require("cookie-parser");
 const errorHandler = require("../controllers/errorHandler");
@@ -19,6 +20,8 @@ const auth = require("../routes/authRouter");
 const details = require("../routes/detailsRoute");
 const product = require("../routes/productRoute");
 const likeRoute = require("../routes/likeRoute");
+
+app.use(express.static(path.join(__dirname, "../public")));
 app.use("/", auth);
 app.use("/api/v1/like", likeRoute);
 app.use("/api/v1/product", product);

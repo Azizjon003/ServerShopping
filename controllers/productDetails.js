@@ -2,7 +2,6 @@ const AppError = require("../utility/appError");
 const catchAsync = require("../utility/catchAsync");
 const db = require("../configs/db");
 const cli = require("cli-color");
-
 const Details = db.productDetails;
 
 const getAll = catchAsync(async (req, res) => {
@@ -20,8 +19,14 @@ const getAll = catchAsync(async (req, res) => {
   });
 });
 
-const add = catchAsync(async (req, res) => {
-  console.log(req.body);
+const add = catchAsync(async (req, res, next) => {
+  // console.log(req.files);
+  const arr = [];
+  req.files.forEach((el) => {
+    arr.push("http://localhost:8000/images/" + el.filename);
+  });
+  console.log(arr);
+  req.body.images = arr;
   const details = await Details.create(req.body);
   res.status(200).json({
     data: details,

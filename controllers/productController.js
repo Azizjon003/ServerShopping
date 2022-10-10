@@ -47,6 +47,10 @@ const getAll = catchAsync(async (req, res) => {
 
 const add = catchAsync(async (req, res) => {
   console.log(req.body);
+  console.log("adbukjasbdjkasbdvasj");
+  console.log(req.file);
+  req.body.image_main =
+    "http://localhost:8000/images/" + req.file.filename || "no-image.jpg";
   const categories = await Product.create(req.body);
   res.status(200).json({
     data: categories,
