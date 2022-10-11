@@ -6,7 +6,14 @@ const Services = (sequelize, DataTypes) => {
       primaryKey: true,
     },
     name: { type: DataTypes.STRING, allowNull: false },
-    service_types_id: { type: DataTypes.STRING, allowNull: false }, //boshqa table
+    serviceTypesId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: "serviseTypes",
+        key: "id",
+      },
+    }, //boshqa table
   });
   return Services;
 };

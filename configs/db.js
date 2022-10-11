@@ -19,8 +19,6 @@ let db = {};
 db.sequelize = sequelize;
 db.Op = Op;
 
-db.basket = require("../models/basketsModel")(sequelize, DataTypes);
-
 db.brands = require("../models/brandsModel")(sequelize, DataTypes);
 
 db.categories = require("../models/categoriesModel")(sequelize, DataTypes);
@@ -34,26 +32,7 @@ db.productDetails = require("../models/productDetailsModel")(
 
 db.reviews = require("../models/reviewsModel")(sequelize, DataTypes);
 
-db.sales = require("../models/salesModel")(sequelize, DataTypes);
-
-db.services = require("../models/servicesModel")(sequelize, DataTypes);
-
-db.servideTypes = require("../models/serviseTypesModel")(sequelize, DataTypes);
-
-db.submitVacancies = require("../models/submitVacancyModel")(
-  sequelize,
-  DataTypes
-);
 db.users = require("../models/userModel")(sequelize, DataTypes);
-
-db.vacancyCategories = require("../models/vacancyCategoryModel")(
-  sequelize,
-  DataTypes
-);
-
-db.vacancies = require("../models/vacancyModel")(sequelize, DataTypes);
-
-db.worker = require("../models/workersModel")(sequelize, DataTypes);
 
 db.categoryLittles = require("../models/categoryLittleModel")(
   sequelize,
@@ -66,6 +45,12 @@ db.products = require("../models/productsModel")(sequelize, DataTypes);
 db.likes = require("../models/likesProduct")(sequelize, DataTypes);
 //
 
+db.worker = require("../models/workersModel")(sequelize, DataTypes);
+
+db.services = require("../models/servicesModel")(sequelize, DataTypes);
+
+db.serviseTypes = require("../models/serviceTypesModel")(sequelize, DataTypes);
+db.reviewService = require("../models/reviewsService.js")(sequelize, DataTypes);
 // users bilan commentlar  qo'shilishi
 db.users.hasOne(db.reviews, { onDelete: "CASCADE" });
 db.reviews.belongsTo(db.users, { onDelete: "CASCADE" });
@@ -74,14 +59,10 @@ db.reviews.belongsTo(db.users, { onDelete: "CASCADE" });
 //
 
 // userlarning elonlari qo'shilishi
-db.users.hasOne(db.submitVacancies, { onDelete: "CASCADE" });
-db.submitVacancies.belongsTo(db.users, { onDelete: "CASCADE" });
+
 // userlarning  elonlari qo'shilishi
 
 //
-
-db.vacancies.hasOne(db.submitVacancies, { onDelete: "CASCADE" });
-db.submitVacancies.belongsTo(db.vacancies, { onDelete: "CASCADE" });
 
 //
 
@@ -93,9 +74,6 @@ db.users.belongsTo(db.locations, { onDelete: "CASCADE" });
 //
 
 //
-
-db.vacancyCategories.hasOne(db.vacancies, { onDelete: "CASCADE" });
-db.vacancies.belongsTo(db.vacancyCategories, { onDelete: "CASCADE" });
 
 //
 
