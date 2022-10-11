@@ -49,8 +49,8 @@ const update = async (req, res) => {
   const loc = await Views.findOne({ where: { id: req.params.id } });
 
   let name = req.body.name || loc.name;
-  let photo = req.body.photo || loc.photo;
-
+  const photo =
+    "http://localhost:8000/images/" + req.file.filename || loc.photo;
   const newLocation = await Views.update(
     { name, photo },
     { where: { id: req.params.id } }
