@@ -1,53 +1,37 @@
 const db = require("../configs/db");
+const catchAsync = require("../utility/catchAsync");
 const Location = db.locations;
 const User = db.users;
 
-const getAll = async (req, res) => {
-  try {
-    const locations = await Location.findAll(); // required:true
-    res.status(200).json({
-      data: locations,
-      status: "succes",
-    });
-  } catch (error) {
-    console.log(error.message);
-  }
-};
+const add = catchAsync(async (req, res) => {
+  req.body.userId = req.user.id;
+  const user = await Location.create(req.body);
+  res.status(200).json({
+    data: user,
+    status: "succes",
+  });
+});
 
-const add = async (req, res) => {
+const delete1 = catchAsync(async (req, res) => {
+  await Location.destroy({ where: { id: req.params.id } });
+  res.status(200).json({
+    data: "success",
+  });
+});
+const getOne = catchAsync(async (req, res) => {
   try {
-    console.log(req.body);
-    const user = await Location.create(req.body);
-    res.status(200).json({
-      data: user,
-      status: "succes",
+    const userId = req.user.id;
+    const loc = await Location.findOne({
+      where: { id: req.params.id, userId },
     });
-  } catch (error) {
-    console.log(error.message);
-  }
-};
-
-const delete1 = async (req, res) => {
-  try {
-    await Location.destroy({ where: { id: req.params.id } });
-    res.status(200).json({
-      data: "success",
-    });
-  } catch (error) {
-    console.log(error.message);
-  }
-};
-const getOne = async (req, res) => {
-  try {
-    const loc = await Location.findOne({ where: { id: req.params.id } });
     res.status(200).json({
       data: loc,
     });
   } catch (error) {
     console.log(error.message);
   }
-};
-const update = async (req, res) => {
+});
+const update = catchAsync(async (req, res) => {
   try {
     const loc = await Location.findOne({ where: { id: req.params.id } });
 
@@ -67,11 +51,10 @@ const update = async (req, res) => {
   } catch (error) {
     console.log(error.message);
   }
-};
+});
 
 module.exports = {
   add,
-  getAll,
   delete1,
   getOne,
   update,

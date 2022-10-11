@@ -1,11 +1,12 @@
 const Router = require("express").Router();
 const {
   add,
-  getAll,
   delete1,
   getOne,
   update,
+  getAll,
 } = require("../controllers/productController");
+
 const { upload } = require("../utility/upload");
 
 Router.route("/").post(upload.single("image_main"), add).get(getAll);

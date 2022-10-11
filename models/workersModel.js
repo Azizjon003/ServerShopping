@@ -40,6 +40,11 @@ const Workers = (sequelize, DataTypes) => {
         key: "id",
       },
     },
+    photo: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: "no-image.jpg",
+    },
   });
   return Workers;
 };
