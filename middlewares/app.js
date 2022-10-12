@@ -23,9 +23,12 @@ const serviceTypeRouter = require("../routes/serviceTypeRoute");
 const reviewServiceRouter = require("../routes/reviewServiceRoute");
 const worker = require("../routes/workerRoute");
 
-
 app.use(express.static(path.join(__dirname, "../public")));
 app.use("/", auth);
+app.use("/api/v1/worker", worker);
+app.use("/api/v1/serviceReviews", reviewServiceRouter);
+app.use("/api/v1/serviceType", serviceTypeRouter);
+app.use("/api/v1/service", serviceRouter);
 app.use("/api/v1/like", likeRoute);
 app.use("/api/v1/product", product);
 auth.use("/api/v1/details", details);

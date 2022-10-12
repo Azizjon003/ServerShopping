@@ -102,16 +102,18 @@ db.reviews.belongsTo(db.products);
 db.products.hasMany(db.reviews);
 db.likes.belongsTo(db.products);
 db.users.hasMany(db.likes);
+db.products.hasOne(db.locations);
+
 // db.products.belongsTo(db.likes);
 // db.users.hasMany(db.likes);
 // force: true, alter: true
-// db.sequelize
-//   .sync({ force: true, alter: true })
-//   .then(() => {
-//     console.log(cli.blue("Database & tables created!"));
-//   })
-//   .catch((err) => {
-//     console.log(cli.red(err.message));
-//   });
+db.sequelize
+  .sync({ force: true, alter: true })
+  .then(() => {
+    console.log(cli.blue("Database & tables created!"));
+  })
+  .catch((err) => {
+    console.log(cli.red(err.message));
+  });
 
 module.exports = db;
