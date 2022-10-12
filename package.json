@@ -27,6 +27,8 @@
     "pg": "^8.8.0",
     "sequelize": "^6.23.0",
     "sharp": "^0.31.1",
+    "swagger-jsdoc": "^6.2.5",
+    "swagger-ui-express": "^4.5.0",
     "tslib": "^2.4.0",
     "validator": "^13.7.0"
   },

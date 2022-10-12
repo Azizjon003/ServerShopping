@@ -7,6 +7,7 @@ const errorHandler = require("../controllers/errorHandler");
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(parser());
+
 const locationRouter = require("../routes/locationRouter");
 const userRouter = require("../routes/userRouter");
 const review = require("../routes/reviewRouter");
@@ -21,6 +22,7 @@ const serviceRouter = require("../routes/serviceRoute");
 const serviceTypeRouter = require("../routes/serviceTypeRoute");
 const reviewServiceRouter = require("../routes/reviewServiceRoute");
 const worker = require("../routes/workerRoute");
+
 
 app.use(express.static(path.join(__dirname, "../public")));
 app.use("/", auth);

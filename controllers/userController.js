@@ -7,8 +7,7 @@ const cli = require("cli-color");
 const catchAsync = require("../utility/catchAsync");
 
 const getAll = catchAsync(async (req, res) => {
-  const users = await User.findAll({ include: Location }); // required:true
-
+  const users = await User.findAll();
   res.status(200).json({
     data: users,
   });
@@ -30,7 +29,6 @@ const delete1 = catchAsync(async (req, res) => {
 const getOne = catchAsync(async (req, res) => {
   const user = await User.findOne({
     where: { id: req.params.id },
-    include: { model: Location },
   });
   res.status(200).json({
     data: user,
