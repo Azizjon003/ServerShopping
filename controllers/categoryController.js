@@ -3,6 +3,7 @@ const catchAsync = require("../utility/catchAsync");
 const db = require("../configs/db");
 const cli = require("cli-color");
 const { upload } = require("../utility/upload");
+const imageResize = require("../utility/imageResize");
 
 const Category = db.categories;
 
@@ -26,6 +27,7 @@ const add = catchAsync(async (req, res) => {
   req.body.photo =
     "http://localhost:8000/images/" + req.file.filename || "no-image.jpg";
   const categories = await Category.create(req.body);
+  await imageResize(req.file.filename);
   res.status(200).json({
     data: categories,
     status: "succes",
