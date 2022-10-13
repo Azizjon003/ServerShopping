@@ -65,6 +65,10 @@ const Products = (sequelize, DataTypes) => {
         key: "id",
       },
     },
+    count: {
+      type: DataTypes.INTEGER,
+      defaultValue: 1,
+    },
   });
   return Products;
 };

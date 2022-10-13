@@ -29,17 +29,10 @@ const Workers = (sequelize, DataTypes) => {
     phone: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: { min: 5, max: 20 },
+      validate: { min: 5 },
     },
     status: { type: DataTypes.INTEGER, allowNull: false },
     experience: { type: DataTypes.STRING, allowNull: false },
-    review_id: {
-      type: DataTypes.UUID,
-      references: {
-        model: "reviewsService",
-        key: "id",
-      },
-    },
     photo: {
       type: DataTypes.STRING,
       allowNull: false,

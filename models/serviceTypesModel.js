@@ -7,14 +7,7 @@ const ServiseTypes = (sequelize, DataTypes) => {
     },
     name: { type: DataTypes.STRING, allowNull: false },
     price: { type: DataTypes.INTEGER, allowNull: false },
-    review_id: {
-      type: DataTypes.UUID,
-      references: {
-        model: "reviewsService",
-        key: "id",
-      },
-    },
-    worker_id: {
+    workerId: {
       type: DataTypes.STRING,
       allowNull: true,
       references: {
@@ -26,6 +19,18 @@ const ServiseTypes = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
       defaultValue: "no-photo.jpg",
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    serviceId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: "services",
+        key: "id",
+      },
     },
   });
   return ServiseTypes;

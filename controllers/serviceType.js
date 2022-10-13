@@ -4,7 +4,13 @@ const db = require("../configs/db");
 const ServiseType = db.serviseTypes;
 
 const getAll = catchAsync(async (req, res, next) => {
-  const type = await ServiseType.findAll({});
+  const type = await ServiseType.findAll({
+    include: [
+      {
+        model: db.services,
+      },
+    ],
+  });
   res.status(200).json({
     data: type,
     status: "succes",
